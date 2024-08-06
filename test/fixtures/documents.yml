@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team: one
+  code: MyString
+  user_ref: MyString
+  description: MyString
+  aasm_state: MyString
+
+two:
+  team: two
+  code: MyString
+  user_ref: MyString
+  description: MyString
+  aasm_state: MyString

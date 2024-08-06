@@ -1,0 +1,39 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="h3"><%= link_to 'Photos', photos_path %> > Photo #<%= @photo.id %></h1>
+      <%= link_to 'Edit', edit_photo_path(@photo), class: "btn btn-link" %>
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+            <div class="mb-4">
+        <h5>Photoable</h5>
+        <%= @photo.photoable %>
+      </div>
+            <div class="mb-4">
+        <h5>Category</h5>
+        <%= @photo.category %>
+      </div>
+            <div class="mb-4">
+        <h5>Latitude</h5>
+        <%= @photo.latitude %>
+      </div>
+            <div class="mb-4">
+        <h5>Longitude</h5>
+        <%= @photo.longitude %>
+      </div>
+            <div class="mb-4">
+        <h5>Altitude</h5>
+        <%= @photo.altitude %>
+      </div>
+            <div class="mb-4">
+        <h5>Photo datetime</h5>
+        <%= @photo.photo_datetime %>
+      </div>
+            <div class="mb-4">
+        <h5>Image</h5>
+        <%= @photo.image %>
+      </div>
+          </div>
+  </div>
+</div>

@@ -1,0 +1,128 @@
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <%= content_tag :li ,class: "nav-item active" do%>
+          <%=link_to root_path, data: { turbolinks: false }, class:"sidebar-brand d-flex align-items-center justify-content-center" do%>
+          <i class="fas fa-hard-hat fa-2x" style="color:yellow"></i>
+          <div class="sidebar-brand-text mx-3"><%= t("brand") %> <sup>4.0</sup></div>
+          <%end%>
+      <%end%>
+
+      <% if user_signed_in? %>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+          <%=link_to discussions_path, data: { turbolinks: false }, class:"sidebar-brand d-flex align-items-center justify-content-center" do%>
+          <i class="fas fa-comments " ></i>
+
+          <%end%>
+
+        <!-- Heading -->
+        
+      <!-- Nav Item - TasksCollapse Menu -->
+        <% if current_team_member.admin? %>
+                <!-- Heading -->
+        <div class="sidebar-heading">
+          <%= t("teamAdmin") %>
+        </div>
+
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse01" aria-expanded="true" aria-controls="collapseTwo">
+              <i class="fas fa-fw fa-cogs"></i>
+              <span><%= t("setup") %></span>
+            </a>
+            <div id="collapse01" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded pl-4">
+                <a class="collapse-item"><%= nav_link_to t('works'), works_path, data: { turbolinks: false } %></a>
+                <a class="collapse-item"><%= nav_link_to t('customers'), customers_path, data: { turbolinks: false } %></a>
+              </div>
+            </div>
+          </li>
+        <% end %>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        <%= t("works") %>
+      </div>
+
+      <!-- Nav Item - TasksCollapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span><%= t("tasks") %></span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded pl-4">
+            <a class="collapse-item"><%= link_to t('new_task'), new_task_path, data: { turbolinks: false } %></a>
+            <a class="collapse-item"><%= link_to t('tasks'), tasks_path, data: { turbolinks: false } %></a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Document Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-file-alt"></i>
+          <span><%= t("documents") %></span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded pl-4">
+            <a class="collapse-item"><%= link_to t('new_document'), new_document_path, data: { turbolinks: false } %></a>
+            <a class="collapse-item"><%= link_to t('documents'), documents_path, data: { turbolinks: false } %></a>
+          </div>
+        </div>
+      </li>
+
+      <% if current_user.admin? %>
+          <!-- Divider -->
+          <hr class="sidebar-divider">
+
+          <!-- Heading -->
+          <div class="sidebar-heading">
+            <%= t("sysAdmin") %>
+          </div>
+
+          <!-- Nav Item - Pages Collapse Menu -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+              <i class="fas fa-fw fa-folder"></i>
+              <span><%= t("sysSetup") %></span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded pl-4">
+                <a class="collapse-item"><%= link_to 'Jumpstart Config', jumpstart_path, 
+                  target: :_blank, data: { turbolinks: false } %></a>
+                <a class="collapse-item"><%= link_to 'Jumpstart Docs', jumpstart.docs_path, 
+                  target: :_blank, data: { turbolinks: false } %></a>
+                <a class="collapse-item"><%= link_to 'Letter Opener', letter_opener_web_path, 
+                  target: :_blank, data: { turbolinks: false } %></a>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $("#sidebarToggle").click(function(e) {
+            e.preventDefault();           
+            $("#accordionSidebar").toggleClass("toggled");
+            $('#accordionSidebar.toggled').find("#sidebar-wrapper").find(".collapse").collapse('hide');
+        });
+    });
+</script>

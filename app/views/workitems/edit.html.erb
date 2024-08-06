@@ -1,0 +1,15 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="h3"><%= @workitem.work.display_name %>: Edit Workitem</h1>
+
+        <%= link_to @workitem.work, data: { turbolinks: false } do %>
+            <i class="fa fa-list fa-2x" aria-hidden="true"></i>
+        <% end %>
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+      <%= render 'form', workitem: @workitem %>
+    </div>
+  </div>
+</div>

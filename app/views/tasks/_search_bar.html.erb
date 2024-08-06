@@ -1,0 +1,20 @@
+<div class="container">
+  <%= search_form_for @q do |f| %>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :our_ref_or_user_ref_cont, t("Reference ") %>
+        <%= f.text_field :our_ref_cont, placeholder: 'reference'  %> 
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :user_ref_cont, t("user_ref_cont") %>
+        <%= f.text_field :user_ref_cont %> 
+      </div>
+    </div>
+  </div>
+    <div class="actions"> <%= f.submit %> </div>
+<% end %>

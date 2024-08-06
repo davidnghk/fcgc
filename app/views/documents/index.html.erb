@@ -1,0 +1,91 @@
+<div class="container mx-auto my-10 px-2">
+
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="h3"><%= t('documents') %></h1>
+
+        <%= link_to new_document_path, data: { turbolinks: false } do %>
+              <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+        <% end %>
+    </div>
+
+  <% if @documents.exists? %>
+
+    <% if browser.device.mobile? %>
+
+        <div class="bg-white rounded shadow table-responsive p-2">
+          <table id="tasks" class="table table-striped table-bordered" >
+            <thead>
+              <tr>
+              
+              </tr> 
+            </thead>
+
+            <tbody>
+            <% @documents.each do |document| %>
+              <tr data-link="<%= document_path(document) %>, 
+                  class="group border-t border-gray-400 hover:bg-gray-100">
+                          <td class="p-2">
+                            <%= link_to document.id, document_path(document), class: 'btn btn-primary' %><br>  
+                            </td>
+                            <td class="p-2">
+                            <%= document.code %>   
+                            <%= document.user_ref %><br>
+                            <% if document.description? %>
+                              <%= document.description %><br>
+                            <% end %>
+                            <%= badge "#{document.aasm_state}", class: "ml-3" %>
+                          </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+
+    <% else %>
+
+      <div class="bg-white rounded shadow table-responsive p-2">
+        <table id="documents" class="table table-striped table-bordered" >
+          <thead>
+            <tr>
+              <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t("id") %></th>
+              <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t("code") %></th>
+              <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t("user_ref") %></th>
+              <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t("description") %></th>
+              <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t("status") %></th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+          <% @documents.each do |document| %>
+            <tr data-link="<%= document_path(document) %>", 
+                class="group border-t border-gray-400 hover:bg-gray-100">
+                        <td class="p-3"><%= link_to document.id, document_path(document), class: 'btn btn-primary' %></td>
+                        <td class="p-3"><%= document.code %></td>
+                        <td class="p-3"><%= document.user_ref %></td>
+                        <td class="p-3"><%= document.description %></td>
+                        <td class="p-3"><%= document.aasm_state %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <% if @pagy.pages > 1 %>
+        <div class="text-center my-6">
+          <%== pagy_nav(@pagy) %>
+        </div>
+      <% end %>
+    <% end %>
+
+  <% else %>
+    <div class="bg-white rounded shadow flex flex-col items-center justify-between p-8 lg:flex-row">
+      <%= image_tag "document.jpg", class: "mb-4 lg:w-1/2" %>
+      <div class="flex-1 text-center">
+        <p class="h3 mb-4">Create your first Document</p>
+        <%= link_to 'New Document', new_document_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+           

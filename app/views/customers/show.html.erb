@@ -1,0 +1,19 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+        <%= link_to edit_customer_path(@customer), data: { turbolinks: false } do %>
+            <i class="fa fa-edit fa-2x" aria-hidden="true"></i>      
+            <%= t('customer') %> #:<%= @customer.id %>
+        <% end %>
+        <%= link_to customers_path, data: { turbolinks: false } do %>
+            <i class="fa fa-list fa-2x" aria-hidden="true"></i>
+        <% end %>
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+      <div class="mb-4"><%= t('code') %>: <%= @customer.code %></div>
+      <div class="mb-4"><%= t('name') %>: <%= @customer.name %></div>
+      <div class="mb-4"><%= t('local_name') %>: <%= @customer.local_name %></div>
+    </div>
+  </div>
+</div>

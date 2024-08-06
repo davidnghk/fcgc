@@ -1,0 +1,57 @@
+zh:
+  devise:
+    confirmations:
+      confirmed: "您的帐号已通过验证，現在您已成功登入。"
+      send_instructions: "您將在幾分钟后收到一封电子邮件，內有验证帐号的步骤说明。"
+      send_paranoid_instructions: "如果我们有您的信箱，您将会收到一封验证您的帐号的电子邮件。"
+    failure:
+      already_authenticated: "您已经登入。"
+      inactive: "您的帐号尚未被启用。"
+      invalid: "信箱或密码是无效的。"
+      locked: "您的帐号已被锁定。"
+      last_attempt: "您还有最后一次尝试机会，再次失败您的帐号将会被锁定。"
+      not_found_in_database: "信箱或密码是无效的。"
+      timeout: "您的登入時效过期，请重新登入。"
+      unauthenticated: "您需要先登入或注册后才能继续。"
+      unconfirmed: "您的帐号需需要经过验证后，才能继续。"
+    mailer:
+      confirmation_instructions:
+        subject: "帐号验证步骤"
+      reset_password_instructions:
+        subject: "密码重设步骤"
+      unlock_instructions:
+        subject: "帐号解锁步骤"
+    omniauth_callbacks:
+      failure: "无法從 %{kind} 验证，因為 \"%{reason}\"。"
+      success: "成功從 %{kind} 验证。"
+    passwords:
+      no_token: "这是密码重设頁面，仅能透过密码重设信件进入。如果您是透过重设信件进入的，请確认您的网址是完整的。"
+      send_instructions: "您將在幾分钟后收到一封电子邮件，內有重新設定密码的步骤说明。"
+      send_paranoid_instructions: "如果我们有您的信箱，您将会收到一封內含可重新設定密码連結的电子邮件。"
+      updated: "您的密码已被修改，您現在已经登入。"
+      updated_not_active: "您的密码已被修改。"
+    registrations:
+      destroyed: "再會！您的帐号已被取消。有緣再會。"
+      signed_up: "注册成功，歡迎！"
+      signed_up_but_inactive: "您已注册成功。然而因為您的帐号尚未啓動，暫時无法登入，抱歉！"
+      signed_up_but_locked: "您已注册成功。 然而因為您的帐号已被锁定，暫時无法登入，抱歉！"
+      signed_up_but_unconfirmed: "確认信件已送至您的 Email 信箱，请點擊信件內連結以啓動您的帐号。"
+      update_needs_confirmation: "您已经成功的更新帐号資訊，但我们仍需確认您的電子信箱，请至新信箱收信並點擊連結以確认您的新电子邮件帐号。"
+      updated: "您已经成功的更新帐号資訊。"
+    sessions:
+      signed_in: "成功登入了。"
+      signed_out: "成功登出了。"
+    unlocks:
+      send_instructions: "您將在幾分钟后收到一封电子邮件，內有將帐号解除锁定的步骤说明。"
+      send_paranoid_instructions: "如果您的帐号已存在，您的電子信箱将会收到如何解锁帐号的指示。"
+      unlocked: "您的帐号已被解锁，現在已经登入。"
+  errors:
+    messages:
+      already_confirmed: "已经验证，请直接登入。"
+      confirmation_period_expired: "必須在 %{period} 內验证，请重新申请。"
+      expired: "已经过期，请重新申请。"
+      not_found: "找不到。"
+      not_locked: "並未被锁定。"
+      not_saved:
+        one: "有一个错误导致 %{resource} 不能被储存："
+        other: "有 %{count} 个错误导致 %{resource} 不能被储存："

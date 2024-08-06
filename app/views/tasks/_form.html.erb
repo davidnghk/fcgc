@@ -1,0 +1,38 @@
+
+
+<%= simple_form_for @task, url: @task,
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    boolean:       :horizontal_boolean,
+    check_boxes:   :horizontal_collection,
+    date:          :horizontal_multi_select,
+    datetime:      :horizontal_multi_select,
+    file:          :horizontal_file,
+    radio_buttons: :horizontal_collection,
+    range:         :horizontal_range,
+    time:          :horizontal_multi_select
+  } do |f| %>
+    <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.hidden_field :parent_id %>
+    <%= f.association :work, collection: Work.where('team_id = ? or id =1 ', current_team.id) %>
+    <%#= f.association :requesting_team, collection: current_user.teams.impersonal %>
+    <%= f.association :customer, collection: Customer.where('team_id = ? or id =1 ', current_team.id) %>
+    <%= f.input :user_ref %>
+    <%= f.input :heading %>
+    <%= f.input :locatin %>
+    <%= f.input :start_date, as: :date, html5: true %>
+    <%= f.input :due_date, as: :date, html5: true  %>
+    <%= f.input :end_date, as: :date, html5: true %>
+    <%= f.input :aasm_state, collection: [ 'booked', 'cancelled', 'inProgress', 'completed'] %>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-success">
+      <i class="fa fa-save fa-2x"></i>
+    </button>
+  </div>
+<% end %>
+

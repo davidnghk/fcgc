@@ -1,0 +1,27 @@
+<% if user_signed_in? %> 
+
+  <% if current_user.admin? and !mobile_device %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <%= t('administration')%><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= nav_link_to t('works'), works_path, data: { turbolinks: false }  %></li>
+              <li><%= nav_link_to t('customers'), customers_path, data: { turbolinks: false } %></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">NF <%= t('administration')%><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= nav_link_to t('tasks'), tasks_path, data: { turbolinks: false } %></li>
+              <li><%= link_to t('documents'), documents_path %></li>
+            </ul>
+        </li>
+  <% end %>
+
+
+<% end %>   
+
+<% if I18n.locale == :zh %>
+    <li><%= link_to 'English', url_for( :locale => 'en' ) %></li>    
+<% else %>
+    <li><%= link_to '中文', url_for( :locale => 'zh' ) %></li>
+<% end %>

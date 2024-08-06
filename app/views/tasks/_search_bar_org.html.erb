@@ -1,0 +1,100 @@
+<div class="container">
+  <%= search_form_for @q, url: search_orders_path, html: {method: :post} do |f| %>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="field">
+          <%= f.label :case_no, t("district") %>
+          <% if I18n.locale == :en %>  
+             <%= f.collection_select :district_id_eq, District.all, :id, :name, include_blank: true %>
+          <% else %> 
+             <%= f.collection_select :district_id_eq, District.all, :id, :chi_name, include_blank: true %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="field">
+            <%= f.label :road_id, t("road") %>
+             <%= f.collection_select :road_id_eq, Road.all, :id, :to_label, include_blank: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="field">
+          <%= f.label :user_ref_cont, t("client_ref") %>
+             <%= f.search_field :user_ref_cont %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="field">
+          <%= f.label :location_cont, t("location") %>
+             <%= f.search_field :location_cont %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="field">
+          <%= f.label :slope_cont, t("slope") %> 
+             <%= f.search_field :slope_cont %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="field">
+          <%= f.label :status_eq, t("status") %>
+          <!--
+          <%= f.select :status_eq, Order.statuses.to_a.map { |w| [w[0].humanize, w[1]] },
+                         {:include_blank => true} %>
+          -->
+          <%= f.select :status_eq, Order.statuses.to_a.map { |w| [ t(w[0]), w[1]] },
+                         {:include_blank => true} %>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="field">
+            <%= f.label :contractor_id, t("contractor") %>
+            <%= f.collection_select :contractor_id_eq, User.Contractor, :id, :name, include_blank: true %>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="field">
+          <%= f.label :call_datetime_gteg, t("notification_date_range") %>
+          <%= f.search_field :call_datetime_gteq %>
+
+          <%= f.label :call_datetime_lteg, "-" %>
+          <%= f.search_field :call_datetime_lteq %>
+        </div> 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+          <div class="field">
+            <%= f.label :expected_completion_datetime_gteg, t("expected_completion_date_range") %>
+            <%= f.search_field :expected_completion_datetime_gteq %>
+
+            <%= f.label :expected_completion_datetime_lteg, "-" %>
+            <%= f.search_field :expected_completion_datetime_lteq %>
+          </div> 
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+          <div class="field">
+            <%= f.label :report_deadline_datetime_gteg, t("report_deadline_date_range") %>
+            <%= f.search_field :report_deadline_datetime_gteq %>
+
+            <%= f.label :report_deadline_datetime_lteg, "-" %>
+            <%= f.search_field :report_deadline_datetime_lteq %>
+          </div> 
+      </div>
+    </div>
+
+    <div class="actions"> <%= f.submit %> </div>

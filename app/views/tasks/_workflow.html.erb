@@ -1,0 +1,72 @@
+<div class="container mx-auto my-2 px-4">
+    <div class="max-w-6xl mx-auto">
+        <div class="flex justify-between items-center mb-4">
+
+            <% if @task.booked? %>
+                <%= link_to t('ask'), ask_task_path(@task), method: :put, class: 'btn btn-danger' %> 
+                <%= link_to t('cancel'), cancel_task_path(@task), method: :put, class: 'btn btn-danger' %>
+            <% end %>
+
+            <% if @task.infoForRequest? %>
+                <%= link_to t('ask'), ask_task_path(@task), method: :put, class: 'btn btn-danger' %>
+                <%= link_to t('cancel'), cancel_task_path(@task), method: :put, class: 'btn btn-danger' %>
+            <% end %>
+
+            <% if @task.infoForWork? %>
+                <%= link_to t('reject'), reject_task_path(@task), method: :put, class: 'btn btn-danger' %>
+                <%= link_to t('askRequestInfo'), askRequestInfo_task_path(@task), method: :put, class: 'btn btn-danger' %>
+                <%= link_to t('assign'), assign_task_path(@task), method: :put, class: 'btn btn-danger' %>
+            <% end %>
+
+            <% if @task.asked? %>
+                <%= link_to t('reject'), reject_task_path(@task), method: :put, class: 'btn btn-danger' %>
+                <%= link_to t('askRequestInfo'), askRequestInfo_task_path(@task), method: :put, class: 'btn btn-danger' %>
+                <%= link_to t('approve'), approve_task_path(@task), method: :put, class: 'btn btn-danger' %>
+                <%= link_to t('assign'), assign_task_path(@task), method: :put, class: 'btn btn-danger' %>
+            <% end %>
+
+            <% if @task.approved? %>
+                <%= link_to new_task_path(parent_id: @task), data: { turbolinks: false } do %>
+                    <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+                <% end %>
+                <%= link_to t('askRequestInfo'), askRequestInfo_task_path(@task), method: :put, class: 'btn btn-danger' %>
+                <%= link_to t('assign'), assign_task_path(@task), method: :put, class: 'btn btn-danger' %>
+            <% end %>
+
+            <% if @task.assigned? %>
+                <%= link_to new_task_path(parent_id: @task), data: { turbolinks: false } do %>
+                    <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+                <% end %>
+                <%= link_to t('askWorkInfo'), askWorkInfo_task_path(@task), method: :put, class: 'btn btn-danger' %>
+                <%= link_to t('acknowledge'), acknowledge_task_path(@task), method: :put, class: 'btn btn-danger' %>
+                <%= link_to t('start'), start_task_path(@task), method: :put, class: 'btn btn-danger' %>
+            <% end %>
+
+            <% if @task.acknowledged? %>
+                <%= link_to t('askWorkInfo'), askWorkInfo_task_path(@task), method: :put, class: 'btn btn-danger' %>
+                <%= link_to t('start'), start_task_path(@task), method: :put, class: 'btn btn-danger' %>
+            <% end %>
+
+            <% if @task.inProgress? %>
+                <%= link_to new_task_path(parent_id: @task), data: { turbolinks: false } do %>
+                    <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+              <% end %>
+                <%= link_to t('complete'), complete_task_path(@task), method: :put, class: 'btn btn-danger' %>
+            <% end %>
+
+            <% if @task.completed? %>
+                <%= link_to new_task_path(parent_id: @task), data: { turbolinks: false } do %>
+                    <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+              <% end %>
+                <%= link_to t('appraise'), appraise_task_path(@task), method: :put, class: 'btn btn-danger' %>
+            <% end %>
+
+            <% if @task.appraised? %>
+              <%= link_to new_task_path(parent_id: @task), data: { turbolinks: false } do %>
+                    <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+              <% end %>
+            <% end %>
+
+        </div>
+    </div>
+</div>

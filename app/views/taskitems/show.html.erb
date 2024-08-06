@@ -1,0 +1,36 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="h3"><%= link_to 'Task', @taskitem.task %> > Taskitem #<%= @taskitem.id %></h1>
+        <%= link_to edit_taskitem_path(@taskitem), data: { turbolinks: false } do %>
+            <i class="fa fa-edit fa-2x" aria-hidden="true"></i>      
+          <% end %>
+        <%= button_to @taskitem, method: :delete, remote: true, class: "btn btn-default" do %>
+        <span class="fa fa-trash fa-2x"></span>
+      <% end %>
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+            <div class="mb-4">
+        <h5>Workitem</h5>
+        <%= @taskitem.workitem.display_name %>
+      </div>
+            <div class="mb-4">
+        <h5>Model</h5>
+        <%= @taskitem.model %>
+      </div>
+            <div class="mb-4">
+        <h5>Serial number</h5>
+        <%= @taskitem.serial_number %>
+      </div>
+            <div class="mb-4">
+        <h5>Rating</h5>
+        <%= @taskitem.rating %>
+      </div>
+            <div class="mb-4">
+        <h5>Remarks</h5>
+        <%= @taskitem.remarks %>
+      </div>
+          </div>
+  </div>
+</div>

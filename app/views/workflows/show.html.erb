@@ -1,0 +1,23 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="h3"><%= link_to 'Workflows', workflows_path %> > Workflow #<%= @workflow.id %></h1>
+      <%= link_to 'Edit', edit_workflow_path(@workflow), class: "btn btn-link" %>
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+            <div class="mb-4">
+        <h5>Code</h5>
+        <%= @workflow.code %>
+      </div>
+            <div class="mb-4">
+        <h5>Name</h5>
+        <%= @workflow.name %>
+      </div>
+            <div class="mb-4">
+        <h5>Local name</h5>
+        <%= @workflow.local_name %>
+      </div>
+          </div>
+  </div>
+</div>

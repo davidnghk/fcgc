@@ -1,0 +1,163 @@
+---
+zh:
+  demo: 演示電影
+  app_short_name: 外務妥
+  app_full_name: 外務妥 PWA
+  create_first_discussion: 創建您的第一個討論
+  new_discussion: 新討論
+  discussions: 討論
+  title: 標題
+  user: 用戶
+  subscribe: 訂閱 外務妥
+  description: 描述
+  work_item: 工程項目 
+  items: 項目
+  item: 項目
+  forum: "論壇"
+  Open: 立項
+  Pending: 待批
+  WorkIng: 工程中
+  Closed: 完結
+  teamAdmin: 團隊管理 
+  sysAdmin: 系統管理
+  sysSetup: 系統設定
+  setup: 設定
+  brand: "外務妥"
+  report: 報告
+  new_task: "新工作"
+  new_document: "新文件"
+  work: 工程
+  works: 工程
+  customer: 顧客
+  customers: 顧客
+  document: 文件 
+  documents: 文件 
+  new: 新
+  edit: 編輯
+  task: 工程
+
+  ask: 要求
+  request: 要求
+  askRequestInfo: 要求草案信息
+  start: 開工
+  complete: 已完成
+  appraise: 評估
+  askWorkInfo: 要求工程信息
+  assign: 分配
+  acknowledge: 確認
+  cancel: 取消
+  approve: 批准
+  reject: 拒絕
+
+  booked: 已記錄
+  asked: 已要求
+  requested: 已要求
+  rejected: 已拒絕
+  approved: 已批准
+  infoForRequest: 要草案信息
+  inProgress: 工程中
+  completed: 已完成
+  appraised: 已評估
+  infoForWork: 要工程信息
+  assigned: 已分配
+  acknowledged: 已確認
+  cancelled: 已取消
+  
+  tasks: 工程 
+  work: 工程
+  customer: 顧客
+  user_ref: 用戶參考
+  our_ref: 內部參考
+  heading: 標題
+  location: 位置
+  start_date: 開工日期
+  due_date: 最後期限
+  end_date: 完工日期
+  status: 狀態
+  name: 名稱
+  local_name: 本地名稱
+  icon: 圖標
+  workflow: 工作流程 
+  Complete: 完成
+  Cancel: 取消
+  Start: 開工
+  Approve: 批准
+  code: 略碼
+  document: 文件
+  configure: 配置
+  signup: 註冊
+  login: 登錄
+  administrate:
+    actions:
+      confirm: 確認 
+      destroy: 刪除
+      edit: 編輯
+      edit_resource: 編輯 資源
+      new_resource: 新 資源
+      show_resource: 展示 資源
+  chi_name: 中文名
+  devise:
+    invitations:
+      edit:
+        header: 標頭
+        submit_button: 提交按鈕
+      new:
+        header: 標頭
+        submit_button: 提交按鈕
+    mailer:
+      invitation_instructions:
+        accept: 接受
+        accept_until: 接受到
+        hello: 你好
+        ignore: 忽視
+        someone_invited_you: 有人邀請你加入 外務妥 工作流程管理系統
+  errors:
+    messages:
+      not_saved: 未保存
+  hello: 你好 ! 世界
+  parent: 父母
+  views:
+    pagination:
+      first: 第一
+      last: 最後
+      next: 下一個
+      previous: 上個
+      truncate: 截短
+  models:
+    works: 工作
+    tasks: 工作
+    documents: 文件
+    customers: 顧客
+  activerecord:
+    attributes:
+      task:
+        aasm_state: "狀態"
+        work: 工程
+        customer: 顧客
+        user_ref: 用戶參考
+        our_ref: 內部參考
+        heading: 標題
+        locatin: 位置
+        start_date: 開工日期
+        due_date: 最後期限
+        end_date: 完工日期
+        status: 狀態
+      work:
+        icon: 圖標
+        workflow: 工作流程  
+        code: 略碼
+        name: 名稱
+        local_name: 本地名稱
+      workitem:
+        code: 略碼
+        name: 名稱
+        local_name: 本地名稱
+      customer:
+        code: 略碼
+        name: 名稱
+        local_name: 本地名稱
+      document:
+        code: 參考
+        user_ref: 用戶參考
+        description: 描述
+        uploadfiles: 上傳文件

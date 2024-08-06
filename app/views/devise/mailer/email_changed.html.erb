@@ -1,0 +1,10 @@
+<p>Hello <%= @email %>!</p>
+
+<% if @resource.try(:unconfirmed_email?) %>
+  <p>我们正在与您联系，通知您您在 外务妥 上的电子邮件已更改为<%= @resource.unconfirmed_email %>.</p>
+<% else %>
+  <p>我们正在与您联系，通知您您的电子邮件地址已更改为<%= @resource.email %>.</p>
+<% end %>
+
+<p>客户服务</p>
+<p>外务妥</p>

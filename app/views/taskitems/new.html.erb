@@ -1,0 +1,14 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="h3">New Taskitem</h1>
+        <%= link_to @taskitem.task, data: { turbolinks: false } do %>
+            <i class="fa fa-list fa-2x" aria-hidden="true"></i>
+        <% end %>
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+      <%= render 'form', taskitem: @taskitem %>
+    </div>
+  </div>
+</div>

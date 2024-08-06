@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team: one
+  user: one
+  parent_id: 1
+  work: one
+  customer: 
+  user_ref: MyString
+  our_ref: MyString
+  heading: MyString
+  locatin: MyString
+  start_date: 2019-11-28
+  due_date: 2019-11-28
+  end_date: 2019-11-28
+
+two:
+  team: two
+  user: two
+  parent_id: 1
+  work: two
+  customer: 
+  user_ref: MyString
+  our_ref: MyString
+  heading: MyString
+  locatin: MyString
+  start_date: 2019-11-28
+  due_date: 2019-11-28
+  end_date: 2019-11-28

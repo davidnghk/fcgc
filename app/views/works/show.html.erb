@@ -1,0 +1,57 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+
+        <%= link_to edit_work_path(@work), data: { turbolinks: false } do %>
+            <i class="fa fa-edit fa-2x" aria-hidden="true"></i>      
+            <%= t('task') %> #:<%= @work.id %>
+        <% end %>
+        <%= link_to works_path, data: { turbolinks: false } do %>
+            <i class="fa fa-list fa-2x" aria-hidden="true"></i>
+        <% end %>
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+      <div class="mb-4"><%= t('code') %>: <%= @work.code %></div>
+      <div class="mb-4"><%= t('name') %>: <%= @work.name %></div>
+      <div class="mb-4"><%= t('local_name') %>: <%= @work.local_name %></div>
+
+      <div class="mb-4"><%= t('workflow') %>: <%= @work.workflow.display_name if @work.workflow_id? %></div>
+    </div>
+  </div>
+</div>
+
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4"></div>
+      <h3><%= t('items') %></h3>
+      <div class="bg-white rounded shadow p-8">
+
+              <table class="table">
+        <thead>
+          <tr>
+            <th class="p-3 uppercase text-left text-xs text-gray-700"><%= t('code') %></th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700"><%= t('name') %></th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700"><%= t('local_name') %></th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @work.workitems.each do |workitem| %>
+          <tr data-link="<%= edit_workitem_path(workitem) %>", data: { turbolinks: false },
+            class="group border-t border-gray-400 hover:bg-gray-100">
+                      <td class="p-3"><%= workitem.code %></td>
+                      <td class="p-3"><%= workitem.name %></td>
+                      <td class="p-3"><%= workitem.local_name %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+        <%= link_to new_workitem_path(work: @work), data: { turbolinks: false } do %>
+            <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

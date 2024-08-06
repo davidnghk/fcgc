@@ -1,0 +1,21 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="h3"><%= link_to t('work'), @workitem.work %> : <%= @workitem.work.display_name %></h1>
+        <%= link_to edit_workitem_path(@workitem), data: { turbolinks: false } do %>
+            <i class="fa fa-edit fa-2x" aria-hidden="true"></i>      
+        <% end %>
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+          
+      <div class="mb-4"><%= t('code') %>: <%= @workitem.code %></div>
+      <div class="mb-4"><%= t('name') %>: <%= @workitem.name %></div>
+      <div class="mb-4"><%= t('local_name') %>: <%= @workitem.local_name %></div>
+      <%= button_to @workitem, method: :delete, remote: true, class: "btn btn-default" do %>
+        <span class="fa fa-trash fa-2x"></span>
+      <% end %>
+    </div>
+    
+  </div>
+</div>

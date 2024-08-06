@@ -1,0 +1,19 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-4">
+
+    <% if @tasks.exists? %>
+        <%= search_form_for @q do |f| %>
+          <div class="field">
+            <%= f.text_field :our_ref_or_user_ref_cont %>
+          </div>
+              <button type="submit" class="btn btn-primary">
+          <i class="fa fa-search fa-2x"></i>
+        </button>
+        <% end %>
+
+      <%= link_to new_task_path, data: { turbolinks: false } do %>
+            <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>

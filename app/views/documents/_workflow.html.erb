@@ -1,0 +1,11 @@
+
+    <% if @document.booked? %>
+        <%= link_to t('Start'), start_document_path(@document), method: :put, class: 'btn btn-danger' %>
+        <%= link_to t('Cancel'), cancel_document_path(@document), method: :put, class: 'btn btn-danger' %>
+    <% end %>
+    <% if @document.inProgress? %>
+        <%= link_to t('Complete'), complete_document_path(@document), method: :put, class: 'btn btn-danger' %>
+    <% end %>
+    <% if @document.completed? %>
+        <%= link_to t('Approve'), approve_document_path(@document), method: :put, class: 'btn btn-danger' %>
+    <% end %>

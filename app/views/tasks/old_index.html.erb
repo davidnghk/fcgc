@@ -1,0 +1,70 @@
+tify-between items-center mb-4">
+    <h1 class="h3"><%= t('tasks') %></h1>
+
+    <% if @current_team_tasks.exists? %>
+      <%= link_to new_task_path, data: { turbolinks: false } do %>
+            <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @tasks.exists? %>
+    <div class="bg-white rounded shadow table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t('work') %></th>
+            <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t('customer') %></th>
+            <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t('user_ref') %></th>
+            <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t('our_ref') %></th>
+            <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t('heading') %></th>
+            <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t('location') %></th>
+            <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t('start_date') %></th>
+            <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t('due_date') %></th>
+            <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t('end_date') %></th>
+            <th class="p-3 uppercase text-left text-sm text-gray-700"><%= t('status') %></th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @tasks.each do |task| %>
+          <tr data-link="<%= task_path(task) %>", 
+              class="group border-t border-gray-400 hover:bg-gray-100">
+                      <td class="p-3">
+                        <%= render_svg "#{task.work.icon.code}", styles: "fill-current icon-lg text-gray-600 inline-block" if task.work_id? %>   
+                      </td>
+                      <td class="p-3"><%= task.customer.name if task.customer_id? %>
+                      </td>
+                      <td class="p-3"><%= task.user_ref %></td>
+                      <td class="p-3"><%= task.our_ref %></td>
+                      <td class="p-3"><%= task.heading %></td>
+                      <td class="p-3"><%= task.locatin %></td>
+                      <td class="p-3"><%= task.start_date %></td>
+                      <td class="p-3"><%= task.due_date %></td>
+                      <td class="p-3"><%= task.end_date %></td>
+                      <td class="p-3"><%= badge "#{task.aasm_state}", class: "ml-3" %></td>
+          
+            <td>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @pagy.pages > 1 %>
+      <div class="text-center my-6">
+        <%== pagy_nav(@pagy) %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <div class="bg-white rounded shadow flex flex-col items-center justify-between p-8 lg:flex-row">
+      <%= image_tag "task.jpg", class: "mb-4 lg:w-1/2" %>
+      <div class="flex-1 text-center">
+        <p class="h3 mb-4">Create your first Task</p>
+        <%= link_to 'New Task', new_task_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

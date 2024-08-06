@@ -1,0 +1,74 @@
+---
+en:
+  newTeam: New Team
+  createTeam: Create A Team
+  aboutUs: About Us
+  profile: Profile 
+  inviteATeamMember: Invite A Team Member
+  editTeam: Edit Team
+  app_short_name: FC SaaS
+  app_full_name: FieldConnect PWA
+  create_first_discussion:  Create your first Discussion
+  new_discussion: New Discussion
+  subscribe: Subscribe FieldConnect
+  aasm_state: "Status"
+  teamAdmin: Team Admin 
+  sysAdmin: Sys Admin
+  sysSetup: Sys Setup
+  brand: FieldConnect
+  document: Document
+  configure: Configure
+  signup: Sign Up
+  login: login
+  administrate:
+    actions:
+      confirm: Confirm
+      destroy: Destroy
+      edit: Edit
+      edit_resource: Edit resource
+      new_resource: New resource
+      show_resource: Show resource
+  chi_name: Chi name
+  code: Code
+  devise:
+    invitations:
+      edit:
+        header: Header
+        submit_button: Submit button
+      new:
+        header: Header
+        submit_button: Submit button
+    mailer:
+      invitation_instructions:
+        accept: Accept
+        accept_until: Accept until
+        hello: Hello
+        ignore: Ignore
+        someone_invited_you: Someone on FieldConnect SaaS System invited you to join
+  errors:
+    messages:
+      not_saved: Not saved
+  hello: Hello world
+  icon: Icon
+  name: Name
+  parent: Parent
+  views:
+    pagination:
+      first: First
+      last: Last
+      next: Next
+      previous: Previous
+      truncate: Truncate
+  workflow: Workflow
+  models:
+    works: Works
+  activerecord:
+    attributes:
+      work:
+        icon: Icon
+        workflow: Workflow
+        code: Code
+        name: Name
+        local_name: Local Name
+      task:
+        aasm_state: "Status"

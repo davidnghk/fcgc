@@ -1,0 +1,32 @@
+<!-- taskitem items -->
+<% if @task.work.count_child > 0  %>
+  <br>
+  <div class="container-fluid" style="border:1px solid #cecece;">
+      <%= t('taskitem') %> 
+      <%= link_to '<i class="fa fa-plus-circle fa-2x"></i>'.html_safe,  new_taskitem_path(task_id: @task, work_id: @task.work_id) %>
+
+    <% if @task.taskitems.count > 0  %>
+      <table  class="table table-striped">
+        <thead>
+          <tr>
+            <th><%= t('work') %></th>
+            <th><%= t('model') %></th>
+            <th><%= t('serial_name') %></th>
+            <th><%= t('rating') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @task.taskitems.each do |taskitem| %>
+              <tr data-link="<%= taskitem_path(taskitem) %>">
+                <td><%= taskitem.workitem.display_name  %></td>
+                <td><%= taskitem.model  %></td>
+                <td><%= taskitem.serial_number  %></td>
+                <td><%= taskitem.rating  %></td>
+
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+<% end %>  

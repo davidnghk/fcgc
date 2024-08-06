@@ -1,0 +1,22 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="h3">
+          
+          <% if @task.parent_id? %>
+            #<%= @task.parent.id %> (<%= @task.parent.work.display_name %>): <%= t('sub_task') %>
+          <% else %>
+            <%= t('new') %> <%= t('task') %>
+          <% end %>
+
+      </h1>
+        <%= link_to tasks_path, data: { turbolinks: false } do %>
+            <i class="fa fa-ban fa-2x" aria-hidden="true"></i>
+        <% end %>    
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+      <%= render 'form', task: @task %>
+    </div>
+  </div>
+</div>

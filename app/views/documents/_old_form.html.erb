@@ -1,0 +1,17 @@
+
+<%= simple_form_for(@document) do |f| %>
+
+  <div class="form-inputs">
+    <%= f.input :code %>
+    <%= f.input :user_ref %>
+    <%= f.input :description %>
+    <%= f.input :uploadfile%>
+    <%= f.input :aasm_state, collection: ['booked', 'cancelled', 'inProgress', 'completed'] %>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">
+      <i class="fa fa-save fa-2x"></i>
+    </button>
+  </div>
+<% end %>

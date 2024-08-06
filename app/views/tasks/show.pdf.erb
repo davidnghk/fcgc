@@ -1,0 +1,159 @@
+<style>
+@media print {
+#scores {
+      page-break-before: always;
+    }
+}
+.break { page-break-before: always; }
+/* Header/Logo Title */
+.header {
+  padding: 20px;
+  text-align: right;
+  color: black;
+  border-bottom: 1px solid blue;
+  font-weight: bold;
+  margin: 1em 0;
+  padding: 0;
+  font-size: 20px;
+}
+h1 {
+    font-size: 25px;
+}
+h2 {
+    font-size: 18px;
+}
+h3 {
+    font-size: 16px;
+}
+p {
+    font-size: 15px;
+    line-height: 80%;
+}
+.space { margin-top: 1000px; }
+
+table, th, td {
+    table-layout: fixed;
+    border-spacing: 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 16px;
+    padding: 6px;
+    width:100%; 
+    padding-bottom: 6px;
+    line-height: 100%;
+}
+
+thead { display: table-header-group }
+tfoot { display: table-row-group }
+tr { page-break-inside: avoid }
+
+table#t01 {
+    padding: 5px;
+    padding-bottom: 5px;
+    width:88%; 
+    height:88%;
+    border: 0;
+}
+
+table#t02 {
+  table-layout: fixed;
+  height: 2000%; 
+  width: 100%;  
+}
+
+#table1, th, td {
+    table-layout: fixed;
+    border-spacing: 5px;
+    border-collapse: collapse;
+    font-size: 16px;
+    padding: 6px;
+    width:100%; 
+    padding-bottom: 6px;
+    line-height: 100%;
+}
+
+.noBorder {
+    border:none !important;
+    border: 0;
+}
+
+table2 {
+    table-layout: fixed;
+    border-spacing: 5px;
+    border-collapse: collapse;
+    font-size: 16px;
+    padding: 6px;
+    width:100%; 
+    padding-bottom: 6px;
+    line-height: 100%;
+    border: 0;
+} 
+
+.footer,
+.push {
+  height: 120px;
+}
+.page-break { display:block; clear:both; page-break-after:always; }
+</style>
+<html>
+<head>
+  <%= wicked_pdf_stylesheet_link_tag "pdf" %>
+</head>
+<body>
+<body>
+
+<div class="header">
+      <%= DateTime.now.to_date  %>
+</div>
+<div>
+  <center>
+      <p><%= current_team.name   %> </p>
+      <p><%= @task.work.display_name  %> <%= t("report") %> 
+        (#: <%= @task.id %>)</p>
+  </center>
+<br>
+
+  <table style="width:100%">
+    <tr>
+      <td><%= t("work") %>: </td><td><%= @task.work.display_name  %>  </td>
+      <td><%= t("our_ref") %>: </td><td><%= @task.our_ref %>  </td>
+    </tr>
+    <tr>
+      <td><%= t("customer") %>: </td><td><%= @task.customer.display_name if @task.customer_id? %>  </td>
+      <td><%= t("user_ref") %>: </td><td><%= @task.user_ref %>  </td>
+    </tr>
+
+    <tr>
+      <td><%= t("heading") %>: </td><td><%= @task.heading %>  </td>
+      <td><%= t("location") %>: </td><td><%= @task.locatin %>  </td>
+    </tr>
+
+    <tr>
+      <td><%= t("start_date") %>: </td><td><%= @task.start_date %>  </td>
+      <td><%= t("due_date") %>: </td><td><%= @task.due_date %>  </td>
+    </tr>
+    <tr>
+      <td><%= t("end_date") %>: </td><td><%= @task.end_date %>  </td>
+      <td><%= t("status") %>: </td><td><%= @task.aasm_state %>  </td>
+    </tr>
+  </table>
+  <table style="width:100%">
+    <% if @task.photos.count > 0 %>
+      <% photo_no = 1 %>
+        <% @task.photos.each do |photo| %>
+          <% if photo_no.odd? %>
+            <tr>
+          <% end %>
+          <td><%= wicked_pdf_image_tag photo.image.medium.url.gsub('https', 'http') %></td>
+          <% if photo_no.even? %>
+            <tr>
+          <% end %>
+          <% photo_no = photo_no + 1 %>
+        <% end %>
+    <% end %>
+
+  </table>
+
+<br>
+
+

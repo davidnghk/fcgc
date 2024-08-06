@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html class="h-full antialiased">
+  <head>
+    <title>
+      <% if content_for?(:title) %>
+        <%= yield :title %> |
+      <% end %>
+      <%= Jumpstart.config.application_name %>
+    </title>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+
+    <%# PWA configuration %>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#8e2731">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/svg" href="/assets/icon-28.svg">
+    <%# All assets are defined in Webpacker app/javascripts now %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%# Be sure to add your own custom favicons %>
+    <%#= render "shared/favicons" %>
+    <%#= render "shared/payments_dependencies" %>
+    <%#= favicon_link_tag asset_path('favicon.ico'), :rel => 'icon', :type => "image/x-icon" %>
+
+    <%# Replace this with your FontAwesome Pro Kit code %>
+    <script src="https://kit.fontawesome.com/0e5ab6a736.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+    <%= yield :head %>
+  </head>
+
+  <body class="bg-gray-100 font-sans font-normal leading-normal h-full antialiased">
+    <header>
+      <%= render partial: "layouts/header" %>
+      <%#= render partial: "layouts/sidebar" %>
+      <%#= render 'layouts/navigation' %>
+    </header>
+    <%= render 'layouts/messages' %>
+    <%= yield %>
+
+    <%#= render partial: "shared/footer" %>
+  </body>
+</html>

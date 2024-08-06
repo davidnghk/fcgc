@@ -1,0 +1,81 @@
+<div class="container mx-auto my-10 px-2">
+  <div class="max-w-12xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+
+        <%= link_to edit_task_path(@task), data: { turbolinks: false } do %>
+            <i class="fa fa-edit fa-2x" aria-hidden="true"></i>      
+        <% end %>
+        <% if current_team_member.admin %>
+          <%= link_to @task, :confirm => 'Are you sure?', :method => :delete, 
+              data: { turbolinks: false }  do %>
+              <i class="fa fa-trash fa-2x" aria-hidden="true"></i>      
+          <% end %>
+        <% end %>
+        <% if @task.parent_id %>
+          <%= link_to @task.parent, data: { turbolinks: false } do %>
+              <i class="fa fa-arrow-circle-up fa-2x" aria-hidden="true"></i>      
+              master #:<%= @task.parent_id %>
+          <% end %>
+        <% end %>
+        <%= link_to tasks_path, data: { turbolinks: false } do %>
+            <i class="fa fa-list fa-2x" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to [@task, format: :pdf], data: { turbolinks: false } do %>
+            <i class="fa fa-file-pdf fa-2x" aria-hidden="true"></i>
+        <% end %>
+
+    </div>
+
+    <div class="flex flex-wrap bg-white rounded shadow p-2">
+      <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 ">
+        <%= t('task') %>: 
+        <%= link_to '#', class: 'btn btn-primary', data: {toggle: :tab} do %>
+            <%= @task.work.display_name %> <%= content_tag :span, @task.id, class: 'badge badge-light ' %>
+        <% end %>
+      </div>
+
+      <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 ">
+        <%= t('customer') %>: <%= @task.customer.display_name if @task.customer_id? %></div>
+      <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 ">
+        <%= t('user_ref') %>: <%= @task.user_ref %></div>
+      <div class="w-full  ">
+        <%= t('heading') %>:  <%= @task.heading %></div>
+      <div class="w-full  ">
+        <%= t('location') %>: 
+            <% if @task.latitude? %>
+              <span  style="text-indent: 1em;" >
+              <%= link_to  "http://maps.google.com/maps/api/staticmap?size=600x600&key=AIzaSyA9afljyyIF4GlEhb51-IqK-FH2i7IqJCg&language=zh-TW&sensor=false&zoom=18&markers=#{@task.latitude}%2C#{@task.longitude}" do %>
+                  <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                <% end %>
+              </span>
+            <% end %>
+        <%= @task.locatin %></div>
+      <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 "><%= t('start_date') %>: <%= @task.start_date %></div>
+      <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 "><%= t('due_date') %>:   <%= @task.due_date %></div>
+      <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 "><%= t('end_date') %>:   <%= @task.end_date %></div>
+      <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 "><b><%= t('status') %>:<%=  @task.aasm_state %></b></div>
+    </div>
+      <% if @task.work.count_child > 0  %>
+        <div class="container mx-auto my-8 px-2">
+          <%= render 'taskitems' %>
+        </div>
+      <% end %>
+
+      <%= render 'subtask' %>
+      <% if @task.work.workflow.code == "SIMPLE" %>
+        <%= render 'mini_workflow' %>
+      <% end %>
+      <%= render 'photo_upload' %>
+  </div>
+</div>
+
+<% if not browser.device.mobile? %>
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div id="photo_details"><%= render 'photos/photo_details' %> </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+

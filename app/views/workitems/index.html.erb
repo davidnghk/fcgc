@@ -1,0 +1,48 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="h3">Workitems: </h1>
+
+      <%= link_to new_task_path(work_id: , data: { turbolinks: false } do %>
+            <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+      <% end %>
+
+  </div>
+
+
+    <div class="bg-white rounded shadow table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Work</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Code</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Name</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Local name</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700 w-20">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @workitems.each do |workitem| %>
+          <tr class="group border-t border-gray-400 hover:bg-gray-100">
+                      <td class="p-3"><%= workitem.work_id %></td>
+                      <td class="p-3"><%= workitem.code %></td>
+                      <td class="p-3"><%= workitem.name %></td>
+                      <td class="p-3"><%= workitem.local_name %></td>
+          
+            <td>
+              <%= link_to "View", workitem, class: "btn btn-link no-underline" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @pagy.pages > 1 %>
+      <div class="text-center my-6">
+        <%== pagy_nav(@pagy) %>
+      </div>
+    <% end %>
+
+
+</div>

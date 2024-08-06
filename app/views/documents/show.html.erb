@@ -1,0 +1,44 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+        <%= link_to edit_document_path(@document), data: { turbolinks: false } do %>
+            <i class="fa fa-edit fa-2x" aria-hidden="true"></i>      
+            <%= t('document') %> #:<%= @document.id %>
+        <% end %>
+        <% if current_team_member.admin %> 
+          <%= link_to @document, :confirm => 'Are you sure?', :method => :delete, 
+              data: { turbolinks: false }  do %>
+              <i class="fa fa-trash fa-2x" aria-hidden="true"></i>      
+          <% end %>
+        <% end %>
+
+        <%= link_to documents_path, data: { turbolinks: false } do %>
+            <i class="fa fa-list fa-2x" aria-hidden="true"></i>
+        <% end %>
+
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+            <div class="mb-4">Code: <%= @document.code %></div>
+            <div class="mb-4">User ref: <%= @document.user_ref %></div>
+            <div class="mb-4">Description: <%= @document.description %></div>
+            <div class="mb-4">Status: <%= @document.aasm_state %></div>
+
+            <%#= render 'workflow' %>
+
+            <br><br>
+              <% @document.uploadfiles.each do |upload| %>
+                <% if upload.variable? %>
+                  <%= link_to image_tag(upload.variant(resize: "400x400")), upload %>
+                <% elsif upload.previewable? %>
+                  <%= link_to image_tag(upload.preview(resize: "400x400")), rails_blob_path(upload, disposition: :attachment) %>
+                <% elsif upload.image? %>
+                  <%= link_to image_tag(upload, width: 400), upload %>
+                <% else %>
+                  <%= link_to upload.filename, rails_blob_path(upload, disposition: :attachment) %>
+                <% end %>
+              <% end %>
+
+    </div>
+  </div>
+</div>

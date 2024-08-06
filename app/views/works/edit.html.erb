@@ -1,0 +1,14 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="h3"><%= t("work") %></h1>
+      <%= link_to @work, data: { turbolinks: false } do %>
+            <i class="fa fa-ban fa-2x" aria-hidden="true"></i>
+      <% end %>
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+      <%= render 'form', work: @work %>
+    </div>
+  </div>
+</div>

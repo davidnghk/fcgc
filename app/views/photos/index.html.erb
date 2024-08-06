@@ -1,0 +1,61 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="h3">Photos</h1>
+
+    <% if @photos.exists? %>
+      <%= link_to 'New Photo', new_photo_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <% if @photos.exists? %>
+    <div class="bg-white rounded shadow table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Photoable</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Category</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Latitude</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Longitude</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Altitude</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Photo datetime</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Image</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700 w-20">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @photos.each do |photo| %>
+          <tr class="group border-t border-gray-400 hover:bg-gray-100">
+                      <td class="p-3"><%= photo.photoable_id %></td>
+                      <td class="p-3"><%= photo.category %></td>
+                      <td class="p-3"><%= photo.latitude %></td>
+                      <td class="p-3"><%= photo.longitude %></td>
+                      <td class="p-3"><%= photo.altitude %></td>
+                      <td class="p-3"><%= photo.photo_datetime %></td>
+                      <td class="p-3"><%= photo.image %></td>
+          
+            <td>
+              <%= link_to "View", photo, class: "btn btn-link no-underline" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @pagy.pages > 1 %>
+      <div class="text-center my-6">
+        <%== pagy_nav(@pagy) %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <div class="bg-white rounded shadow flex flex-col items-center justify-between p-8 lg:flex-row">
+      <%= image_tag "empty.svg", class: "mb-4 lg:w-1/2" %>
+      <div class="flex-1 text-center">
+        <p class="h3 mb-4">Create your first Photo</p>
+        <%= link_to 'New Photo', new_photo_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,172 @@
+---
+zh:
+  pricing: 定价
+  aboutUS: 关于我们
+  teams: 团队 
+  billing: 帐单
+  profile: 个人资料
+  password: 密码
+  inviteATeamMember: 邀请团队成员
+  editTeam: 编辑团队
+  Hello: 你好
+  demo: 演示电影 
+  app_short_name: 外务妥
+  app_full_name: 外务妥 PWA
+  create_first_discussion: 创建您的第一个讨论
+  new_discussion: 新讨论
+  discussions: 讨论
+  title: 标题
+  user: 用戶
+  subscribe: 訂閱 外务妥
+  description: 描述
+  work_item: 工程项目 
+  items: 项目
+  item: 项目
+  forum: 论坛
+  Open: 立项
+  Pending: 待批
+  WorkIng: 工程中
+  Closed: 完結
+  teamAdmin: 团队管理 
+  sysAdmin: 系統管理
+  sysSetup: 系統设定
+  setup: 设定
+  brand: "外务妥"
+  report: 報告
+  new_task: "新工作"
+  new_document: 新文件
+  work: 工程
+  works: 工程
+  customer: 顾客
+  customers: 顾客
+  document: 文件 
+  documents: 文件 
+  new: 新
+  edit: 编辑
+  task: 工程
+
+  ask: 要求
+  request: 要求
+  askRequestInfo: 要求草案信息
+  start: 開工
+  complete: 已完成
+  appraise: 评估
+  askWorkInfo: 要求工程信息
+  assign: 分配
+  acknowledge: 确认
+  cancel: 取消
+  approve: 批准
+  reject: 拒絕
+
+  booked: 已記录
+  asked: 已要求
+  requested: 已要求
+  rejected: 已拒絕
+  approved: 已批准
+  infoForRequest: 要草案信息
+  inProgress: 工程中
+  completed: 已完成
+  appraised: 已评估
+  infoForWork: 要工程信息
+  assigned: 已分配
+  acknowledged: 已确认
+  cancelled: 已取消
+  
+  tasks: 工程 
+  work: 工程
+  customer: 顾客
+  user_ref: 用戶參考
+  our_ref: 內部參考
+  heading: 标题
+  location: 位置
+  start_date: 開工日期
+  due_date: 最后期限
+  end_date: 完工日期
+  status: 狀態
+  name: 名称
+  local_name: 本地名称
+  icon: 图标
+  workflow: 工作流程 
+  Complete: 完成
+  Cancel: 取消
+  Start: 開工
+  Approve: 批准
+  code: 略码
+  document: 文件
+  configure: 配置
+  signup: 注册
+  login: 登录
+  administrate:
+    actions:
+      confirm: 确认 
+      destroy: 刪除
+      edit: 编辑
+      edit_resource: 编辑 资源
+      new_resource: 新 资源
+      show_resource: 展示 资源
+  chi_name: 中文名
+  devise:
+    invitations:
+      edit:
+        header: 标头
+        submit_button: 提交按鈕
+      new:
+        header: 标头
+        submit_button: 提交按鈕
+    mailer:
+      invitation_instructions:
+        accept: 接受
+        accept_until: 接受到
+        hello: 你好
+        ignore: 忽视
+        someone_invited_you: 有人邀请你加入 外务妥 工作流程管理系统
+  errors:
+    messages:
+      not_saved: 未保存
+  hello: 你好 ! 世界
+  parent: 父母
+  views:
+    pagination:
+      first: 第一
+      last: 最后
+      next: 下一个
+      previous: 上个
+      truncate: 截短
+  models:
+    works: 工作
+    tasks: 工作
+    documents: 文件
+    customers: 顾客
+  activerecord:
+    attributes:
+      task:
+        aasm_state: "狀態"
+        work: 工程
+        customer: 顾客
+        user_ref: 用戶參考
+        our_ref: 內部參考
+        heading: 标题
+        locatin: 位置
+        start_date: 開工日期
+        due_date: 最后期限
+        end_date: 完工日期
+        status: 狀態
+      work:
+        icon: 图标
+        workflow: 工作流程  
+        code: 略码
+        name: 名称
+        local_name: 本地名称
+      workitem:
+        code: 略码
+        name: 名称
+        local_name: 本地名称
+      customer:
+        code: 略码
+        name: 名称
+        local_name: 本地名称
+      document:
+        code: 參考
+        user_ref: 用戶參考
+        description: 描述
+        uploadfiles: 上传文件
